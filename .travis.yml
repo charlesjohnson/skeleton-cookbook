@@ -4,9 +4,9 @@ rvm:
   - 1.9.3
   - 2.0.0
 
-install: bundle install --without=integration
+install: bundle install --without=integration development
 
-script: bundle exec rake test
+script: bundle exec rake unit
 
 branches:
   only:

@@ -1,16 +1,27 @@
 ---
-driver:
-  name: vagrant
+driver_plugin: vagrant
+driver_config:
+  require_chef_omnibus: true
 
 provisioner:
-  name: chef_solo
+  name: chef_zero
 
 platforms:
   - name: ubuntu-12.04
+    run_list:
+      - recipe[apt::default]
+  - name: centos-6.4
+    run_list:
+      - recipe[yum::default]
+  - name: debian-7.2.0
+    driver_config:
+      box: opscode-debian-7.2.0
+      box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_debian-7.2.0_chef-provisionerless.box
+    run_list:
+      - recipe[apt::default]
 
 suites:
   - name: default
     run_list:
-      - recipe[apt::default]
       - recipe[skeleton::default]
     attributes:

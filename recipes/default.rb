@@ -19,6 +19,6 @@
 
 # Install/configure something here
 # Replace this with meaningful resources
-package 'tree' do
+package 'vim' do
   action :install
 end

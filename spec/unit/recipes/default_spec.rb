@@ -1,14 +1,10 @@
 require 'spec_helper'
 
 describe 'skeleton::default' do
+  let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
   it 'installs sample package' do
-    case RSpec.configuration.os
-    when 'Debian'
-      expect(package 'vim').to be_installed
-    when 'RedHat'
-      expect(package 'vim-enhanced').to be_installed
-    end
+    expect(chef_run).to install_package 'vim'
   end
 
   it 'does something' do
