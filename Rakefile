@@ -7,7 +7,7 @@ require 'rubocop/rake_task'
 
 # Rubocop before rspec so we don't lint vendored cookbooks
 desc "Run all tests except Kitchen (default task)"
-task :unit =>  %w{rubocop foodcritic spec}
+task :integration =>  %w{rubocop foodcritic spec}
 task :default => :unit
 
 # Lint the cookbook
@@ -16,7 +16,7 @@ task :lint => [ :rubocop, :foodcritic ]
 
 # Run the whole shebang
 desc "Run all tests"
-task :test => [ :lint, :acceptance ]
+task :test => [ :lint, :integration ]
 
 # RSpec
 desc 'Run chefspec tests'
