@@ -6,7 +6,7 @@ rvm:
 
 install: bundle install --without=integration development
 
-script: bundle exec rake unit
+script: bundle exec rake test
 
 branches:
   only:
