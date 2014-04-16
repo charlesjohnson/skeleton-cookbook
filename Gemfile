@@ -19,5 +19,5 @@ end
 group :integration do
   gem 'test-kitchen', '~> 1.0'
   gem 'kitchen-vagrant'
-  gem 'kitchen-docker'
+  gem 'kitchen-docker-api', '~> 0.3.0'
 end
