@@ -37,14 +37,14 @@ The cookbook provides the following Rake tasks for testing:
 
     rake acceptance                   # Alias for kitchen:all
     rake foodcritic                   # Run foodcritic lint checks
+    rake integration                  # Run all tests except Kitchen (default t...
     rake kitchen:all                  # Run all test instances
     rake kitchen:default-centos-64    # Run default-centos-64 test instance
-    rake kitchen:default-debian-72    # Run default-debian-72 test instance
     rake kitchen:default-ubuntu-1204  # Run default-ubuntu-1204 test instance
+    rake lint                         # Run linters
     rake rubocop                      # Run Rubocop lint checks
     rake spec                         # Run chefspec tests
     rake test                         # Run all tests
-    rake unit                         # Run all tests except Kitchen (default task)
 
 
 License and Author
