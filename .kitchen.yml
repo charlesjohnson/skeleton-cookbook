@@ -2,8 +2,9 @@
 driver_plugin: docker
 # driver_plugin: vagrant
 driver_config:
-  require_chef_omnibus: true
-  socket: 'tcp://localhost:4243'
+  provision_command: curl -L https://www.getchef.com/chef/install.sh | bash
+ # require_chef_omnibus: true
+  socket: 'tcp://192.168.42.43:4243'
 
 provisioner:
   name: chef_zero
@@ -11,7 +12,7 @@ provisioner:
 platforms:
   - name: ubuntu-12.04
     run_list:
-      - recipe[apt::default]
+      # - recipe[apt::default]
   - name: centos-6.4
     run_list:
       - recipe[yum::default]
