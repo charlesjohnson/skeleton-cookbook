@@ -31,6 +31,12 @@ Recipes
 Testing
 -------
 
+Kitchen Prep for OSX:
+---------------------
+1) Install DVM: https://github.com/fnichol/dvm
+2) DVM up.
+3) Kitchen is ready to go!
+
 [![Build Status](https://travis-ci.org/charlesjohnson/skeleton-cookbook.png?branch=master)](https://travis-ci.org/charlesjohnson/skeleton-cookbook)
 
 The cookbook provides the following Rake tasks for testing:
