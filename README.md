@@ -1,9 +1,7 @@
 Skeleton Cookbook
 =================
 
-This is a testable skeleton cookbook designed for you or your organization to
-fork and modify appropriately. The cookbook comes with everything you need to
-develop infrastructure code with Chef and feel confident about it.
+This is a testable skeleton cookbook designed for you or your organization to fork and modify appropriately. The cookbook comes with everything you need to feel confident while developing infrastructure code with Chef.
 
 Requirements
 ------------
@@ -31,10 +29,10 @@ Recipes
 Testing
 -------
 
-Kitchen Prep for OSX:
+Vagrant Prep for OSX:
 ---------------------
-1) Install DVM: https://github.com/fnichol/dvm
-2) DVM up.
+1) Install Vagrant: http://www.vagrantup.com/downloads.html
+2) Install VirtualBox: https://www.virtualbox.org/wiki/Downloads
 3) Kitchen is ready to go!
 
 [![Build Status](https://travis-ci.org/charlesjohnson/skeleton-cookbook.png?branch=master)](https://travis-ci.org/charlesjohnson/skeleton-cookbook)
@@ -42,15 +40,15 @@ Kitchen Prep for OSX:
 The cookbook provides the following Rake tasks for testing:
 
     rake acceptance                   # Alias for kitchen:all
-    rake foodcritic                   # Run foodcritic lint checks
-    rake integration                  # Run all tests except Kitchen (default t...
+    rake all                          # Run all tests
     rake kitchen:all                  # Run all test instances
-    rake kitchen:default-centos-64    # Run default-centos-64 test instance
+    rake kitchen:default-centos-65    # Run default-centos-65 test instance
     rake kitchen:default-ubuntu-1204  # Run default-ubuntu-1204 test instance
     rake lint                         # Run linters
-    rake rubocop                      # Run Rubocop lint checks
+    rake lint:foodcritic              # Run foodcritic lint checks
+    rake lint:rubocop                 # Run Rubocop lint checks
     rake spec                         # Run chefspec tests
-    rake test                         # Run all tests
+    rake test                         # Run all tests except Kitchen (default)
 
 
 License and Author
