@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'berkshelf',  '~> 3.0'
-gem 'chef',       '~> 11.12.2'
-gem 'chefspec',   '~> 3.4'
+gem 'chef',       '~> 11.12'
+gem 'chefspec',   '~> 4.0'
 gem 'foodcritic', '~> 3.0'
 gem 'rake'
 gem 'rubocop',    '~> 0.18.1'
@@ -19,6 +19,4 @@ end
 group :integration do
   gem 'test-kitchen', '~> 1.0'
   gem 'kitchen-vagrant'
-#  gem 'kitchen-docker-api', '~> 0.3.0'
-  gem 'kitchen-docker'
 end

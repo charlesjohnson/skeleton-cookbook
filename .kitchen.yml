@@ -1,19 +1,32 @@
 ---
-driver_plugin: docker
-# driver_plugin: vagrant
+# driver_plugin: docker
+driver_plugin: vagrant
 driver_config:
-  provision_command: curl -L https://www.getchef.com/chef/install.sh | bash
- # require_chef_omnibus: true
-  socket: 'tcp://192.168.42.43:4243'
+  # provision_command: curl -L https://www.getchef.com/chef/install.sh | bash
+ require_chef_omnibus: true
+  # socket: 'tcp://192.168.42.43:4243'
 
 provisioner:
   name: chef_zero
 
 platforms:
   - name: ubuntu-12.04
+    driver:
+      box: chef/ubuntu-12.04
+      # virtualbox
+      box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-12.04_chef-provisionerless.box
+      # vmware
+      # http://opscode-vm-bento.s3.amazonaws.com/vagrant/vmware/opscode_centos-6.5_chef-provisionerless.box
     run_list:
-      # - recipe[apt::default]
-  - name: centos-6.4
+      - recipe[apt::default]
+
+  - name: centos-6.5
+    driver:
+      box: chef/centos-6.5
+      # virtualbox
+      box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_chef-provisionerless.box
+      # vmware
+      # http://opscode-vm-bento.s3.amazonaws.com/vagrant/vmware/opscode_ubuntu-12.04_chef-provisionerless.box
     run_list:
       - recipe[yum::default]
 

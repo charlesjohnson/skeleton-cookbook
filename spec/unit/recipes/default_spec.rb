@@ -8,6 +8,6 @@ describe 'skeleton::default' do
   end
 
   it 'does something' do
-    pending 'Replace this with meaningful tests'
+    skip 'Replace this test with meaningful tests'
   end
 end
