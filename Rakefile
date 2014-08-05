@@ -6,17 +6,43 @@ require 'rubocop/rake_task'
 # General tasks
 
 # Rubocop before rspec so we don't lint vendored cookbooks
-desc "Run all tests except Kitchen (default task)"
-task :integration =>  %w{rubocop foodcritic spec}
-task :default => :unit
+desc "Run all tests except Kitchen (default)"
+task :test =>  %w{lint spec}
+task :default => :test
 
 # Lint the cookbook
 desc "Run linters"
-task :lint => [ :rubocop, :foodcritic ]
+task :lint => [ 'lint:rubocop', 'lint:foodcritic' ]
 
 # Run the whole shebang
 desc "Run all tests"
-task :test => [ :lint, :integration ]
+task :all => [ :integration, :acceptance ]
+
+# Code linters
+namespace :lint do
+
+  # Foodcritic
+  desc 'Run foodcritic lint checks'
+  task :foodcritic do
+    if Gem::Version.new('1.9.2') <= Gem::Version.new(RUBY_VERSION.dup)
+      puts "Running Foodcritic tests..."
+      FoodCritic::Rake::LintTask.new do |t|
+        t.options = { :fail_tags => ['any'] }
+      puts "done."    
+      end
+    else
+      puts "WARN: foodcritic run is skipped as Ruby #{RUBY_VERSION} is < 1.9.2."
+    end
+  end
+
+  # Rubocop
+  desc 'Run Rubocop lint checks'
+  task :rubocop do
+    puts 'Running Rubocop tests...'
+    Rubocop::RakeTask.new
+    puts 'done.'
+  end
+end
 
 # RSpec
 desc 'Run chefspec tests'
@@ -25,26 +51,7 @@ task :spec do
   RSpec::Core::RakeTask.new(:spec)
 end
 
-# Foodcritic
-desc 'Run foodcritic lint checks'
-task :foodcritic do
-  if Gem::Version.new('1.9.2') <= Gem::Version.new(RUBY_VERSION.dup)
-    puts "Running Foodcritic tests..."
-    FoodCritic::Rake::LintTask.new do |t|
-      t.options = { :fail_tags => ['any'] }
-    puts "done."    
-    end
-  else
-    puts "WARN: foodcritic run is skipped as Ruby #{RUBY_VERSION} is < 1.9.2."
-  end
-end
-
-# Rubocop
-desc 'Run Rubocop lint checks'
-task :rubocop do
-  Rubocop::RakeTask.new
-end
-
+# Test Kitchen
 begin
   require 'kitchen/rake_tasks'
   Kitchen::RakeTasks.new
