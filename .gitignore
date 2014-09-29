@@ -11,6 +11,7 @@
 .kitchen.local.yml
 Berksfile.lock
 Gemfile.lock
+.kitchen.local.yml
 
 .bundle/
 .cache/

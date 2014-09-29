@@ -19,6 +19,7 @@
 
 # Install/configure something here
 # Replace this with meaningful resources
+
 package 'vim' do
   action :install
 end
